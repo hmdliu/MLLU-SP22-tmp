@@ -11,8 +11,8 @@
 #SBATCH --gres=gpu:1 
 #SBATCH --requeue
 
-singularity exec --nv --bind $SCRATCH --overlay $SCRATCH/overlay-25GB-500K.ext3:ro $SCRATCH/cuda11.4.2-cudnn8.2.4-devel-ubuntu20.04.3.sif /bin/bash -c "
+singularity exec --nv --bind /scratch/$USER --overlay /scratch/$USER/overlay-25GB-500K.ext3:ro /scratch/$USER/cuda11.4.2-cudnn8.2.4-devel-ubuntu20.04.3.sif /bin/bash -c "
 source /ext3/env.sh
-cd $SCRATCH/test
+cd /scratch/$USER/test
 python test_gpu.py
 "
